@@ -10,6 +10,8 @@ public class PlayerBehavior : MonoBehaviour
     public float horizontalScreenLimit;
     public float verticalScreenLimit;
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
+    public int lives;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,8 @@ public class PlayerBehavior : MonoBehaviour
         speed = 4f;
         horizontalScreenLimit = 9.5f;
         verticalScreenLimit = 3.5f;
-        
+        lives = 3;
+        Debug.Log(lives);
     }
 
     // Update is called once per frame
@@ -62,6 +65,18 @@ public class PlayerBehavior : MonoBehaviour
         {
             //Create a bullet
             Instantiate(bulletPrefab, transform.position + new Vector3(0,1,0), Quaternion.identity);
+        }
+    }
+    public void LoseLife()
+    {
+        lives --;
+        GameObject.Find("GameManager").GetComponent<GameManager>().LoseLife(1);
+        if (lives == 0) 
+        {
+            //GameOver
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            GameObject.Find("GameManager").GetComponent<GameManager>().GameOver();
+            Destroy(this.gameObject);
         }
     }
 }
