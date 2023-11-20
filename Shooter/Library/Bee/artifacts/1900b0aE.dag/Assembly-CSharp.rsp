@@ -349,6 +349,7 @@
 "Assets/Scripts/Enemy.cs"
 "Assets/Scripts/ExplosionBehavior.cs"
 "Assets/Scripts/GameManager.cs"
+"Assets/Scripts/MainMenu.cs"
 "Assets/Scripts/MovingObjexts.cs"
 "Assets/Scripts/PickupBehavior.cs"
 "Assets/Scripts/PlayerBehavior.cs"
